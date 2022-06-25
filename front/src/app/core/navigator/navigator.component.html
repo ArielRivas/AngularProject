@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li routerLink="/">
+      <img src="../../../assets/logo.png" alt="Comic logo" />
+    </li>
+    <li>
+      <a routerLink="/comics">Comics</a>
+    </li>
+    <li>
+      <a routerLink="/gestion">Gestion</a>
+    </li>
+    <li (click)="changeTheme()">
+      <p>{{themeText}}</p>
+    </li>
+  </ul>
+</nav>

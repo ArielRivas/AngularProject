@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: rgb(80, 80, 80);
+  color: whitesmoke;
+  transition: all 0.8s;
+}
+
+.light{
+  background-color: whitesmoke;
+  color: rgb(80, 80, 80);
+  
+}

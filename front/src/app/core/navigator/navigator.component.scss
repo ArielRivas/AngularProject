@@ -1,0 +1,37 @@
+nav {
+  ul {
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+      transition: all 0.3s;
+      text-transform: uppercase;
+
+      &:hover {
+        color: orange;
+      }
+    }
+
+    img {
+      height: 80px;
+      width: auto;
+      filter: invert(80%);
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    p {
+      transform: scale(1.2);
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+  }
+}
