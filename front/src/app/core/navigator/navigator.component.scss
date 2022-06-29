@@ -1,37 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 nav {
+  position: fixed;
+
   ul {
-    height: 20vh;
+    margin-left: 15px;
+    height: 12vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    z-index: 0;
+    color: rgb(121, 126, 131);
+    border-radius: 30px;
+    padding-right: 30px;
     a {
-      transition: all 0.3s;
+      transition: 0.5s;
       text-transform: uppercase;
+      font-family: "Russo One", sans-serif;
+      font-size: 25px;
+      padding: 10px;
 
       &:hover {
-        color: orange;
+        color: #fff;
+        text-shadow: 0 0 5px #03e9f4,
+                    0 0 25px #03e9f4,
+                    0 0 50px #03e9f4,
+                    0 0 100px #03e9f4;
       }
     }
-
-    img {
-      height: 80px;
-      width: auto;
-      filter: invert(80%);
-      transition: all 0.3s;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.1);
-      }
+  }
+  img {
+    height: 80px;
+    width: auto;
+    transition: all 0.3s;
+    cursor: pointer;
+    filter: invert(180);
+    background-color: rgba(255, 255, 255, 0.116);
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 30px;
+    &:hover {
+      transform: scale(1.1);
     }
-
-    p {
-      transform: scale(1.2);
-      transition: all 0.3s;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.5);
-      }
-    }
+  }
+  p {
+    transform: scale(1.2);
+    transition: all 0.3s;
+    cursor: pointer;
   }
 }

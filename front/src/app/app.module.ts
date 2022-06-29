@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { NavigatorComponent } from './core/navigator/navigator.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ComicsComponent } from './pages/comics/comics.component';
+import { CharaComponent } from './pages/chara/chara.component';
 import { GestionComponent } from './pages/gestion/gestion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavigatorComponent,
     FooterComponent,
     HomeComponent,
-    ComicsComponent,
-    GestionComponent
+    CharaComponent,
+    GestionComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

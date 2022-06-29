@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ComicsService } from 'src/app/services/comics.service';
+import { CharaService } from 'src/app/services/chara.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,62 +9,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./gestion.component.scss']
 })
 export class GestionComponent implements OnInit {
-  public comicForm!: FormGroup;
-  //Almacenamos el reflejo de comicData del servicio
-  public newComic = this.comicsService.comicData;
-  //Almacenamos el reflejo del id de comicData del servicio para que nos sea más facil hacer el put y el delete
-  public comicID = this.comicsService.comicData.id;
+  public charaForm!: FormGroup;
+  public newChara = this.charaService.charaData;
+  public charaID = this.charaService.charaData.id;
 
-  constructor(private formBuilder: FormBuilder, private comicsService: ComicsService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private charaService: CharaService, private router: Router) { }
 
   ngOnInit(): void {
-    //Vaciamos el comic nada más arrancar nuestro formulario para asegurarnos de que no se ha quedado nada almacenado
-    this.comicsService.clearComic();
-    //Construimos nuestro formulario
-    this.comicForm = this.formBuilder.group({
-      //Le asignamos como valor inicial a cada uno de los campos su campo correspondiente con newComic por si queremos editar algo existente que refleje lo que metemos en comicData
-      title: [this.newComic.title, [Validators.required, Validators.minLength(2)]],
-      author: [this.newComic.author, [Validators.required]],
-      company: [this.newComic.company, [Validators.required]],
-      cover: [this.newComic.cover, [Validators.required]]
+    this.charaService.clearChara();
+    this.charaForm = this.formBuilder.group({
+      name: [this.newChara.name, [Validators.required, Validators.minLength(2)]],
+      class: [this.newChara.class, [Validators.required]],
+      description: [this.newChara.description, [Validators.required]],
+      quote: [this.newChara.quote, [Validators.required]],
+      image: [this.newChara.image, [Validators.required]]
     })
 
-    //Con esta funcion que tiene un formulario reactivo de Angular podemos capturar en un objeto de golpe el resultado de un formulario a tiempo real:
-    this.comicForm.valueChanges.subscribe((changes) => {
-      this.newComic = changes;
+
+    this.charaForm.valueChanges.subscribe((changes:any) => {
+      this.newChara = changes;
     })
   }
 
-  //Definimos la funcion que se ejecutara al subir el formulario
+
   public onSubmit() {
-    if (this.comicID !== "") {
-      //Como es distinto a "" es que hay un comic ya, por lo tanto lo vamos a editar
-      //IMPORTANTE: Teneis que ejecutar el suscribe porque si no no funciona el metodo http
-      this.comicsService.editComic(this.comicID, this.newComic).subscribe();
-      alert("Comic editado correctamente");
+    if (this.charaID !== "") {
+      this.charaService.editChara(this.charaID, this.newChara).subscribe();
+      alert("Character edited correctly");
     } else {
-      //Si es "" es que no existe el comic y lo vamos a postear
-      this.comicsService.postComic(this.newComic).subscribe();
-      alert("Comic creado correctamente")
+      this.charaService.postChara(this.newChara).subscribe();
+      alert("Character created correctly")
     }
 
-    //Resetar el formulario
-    this.comicForm.reset();
-    //En cuanto termine de ejecutarse el onsubmit se vaya dinamicamente como si fuera un routerLink a comics otra vez
-    this.router.navigate(["/comics"])
+
+    this.charaForm.reset();
+    this.router.navigate(["/chara"])
   }
 
   public delete() {
-    //Con este confirm evitamos borrar un comic si no estamos seguros
-    if (confirm("¿Estas seguro de borrar el comic?") == true) {
-      //Estamos pasandole el id de cada uno de los comics para borrarlo
-      this.comicsService.deleteComic(this.comicID).subscribe();
-      //Borar el formulario
-      this.comicForm.reset();
-      alert("Comic borrado correctamente");
-      this.router.navigate(["/comics"])
+    if (confirm("Are you sure to kill this character?") == true) {
+      this.charaService.deleteChara(this.charaID).subscribe();
+      this.charaForm.reset();
+      alert("Character fainted");
+      this.router.navigate(["/chara"])
     } else {
-      this.router.navigate(["/comics"])
+      this.router.navigate(["/chara"])
     }
 
   }
