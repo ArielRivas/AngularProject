@@ -19,7 +19,7 @@ import { DetailsComponent } from './pages/details/details.component';
     HomeComponent,
     CharaComponent,
     GestionComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,4 +31,5 @@ import { DetailsComponent } from './pages/details/details.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
 import { CharaService } from './chara.service';
 
 describe('CharaService', () => {
+
   let service: CharaService;
 
   beforeEach(() => {

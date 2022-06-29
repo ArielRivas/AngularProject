@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./gestion.component.scss']
 })
 export class GestionComponent implements OnInit {
+
   public charaForm!: FormGroup;
   public newChara = this.charaService.charaData;
   public charaID = this.charaService.charaData.id;
@@ -25,22 +26,19 @@ export class GestionComponent implements OnInit {
       image: [this.newChara.image, [Validators.required]]
     })
 
-
     this.charaForm.valueChanges.subscribe((changes:any) => {
       this.newChara = changes;
     })
   }
 
-
   public onSubmit() {
     if (this.charaID !== "") {
       this.charaService.editChara(this.charaID, this.newChara).subscribe();
-      alert("Character edited correctly");
+      alert("Character equiped correctly");
     } else {
       this.charaService.postChara(this.newChara).subscribe();
       alert("Character created correctly")
     }
-
 
     this.charaForm.reset();
     this.router.navigate(["/chara"])
@@ -55,7 +53,5 @@ export class GestionComponent implements OnInit {
     } else {
       this.router.navigate(["/chara"])
     }
-
   }
-
 }
