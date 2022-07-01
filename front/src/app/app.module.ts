@@ -11,6 +11,8 @@ import { GestionComponent } from './pages/gestion/gestion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './pages/details/details.component';
 
+import { AppPipesModule } from './pipes/app-pipes.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { DetailsComponent } from './pages/details/details.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AppPipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

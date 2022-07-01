@@ -1,12 +1,17 @@
 <section>
   <h2>Characters</h2>
-  <div>
-    <figure id="card" *ngFor="let charas of charaList">
+  <img class="icon" src="../../../assets/search-svgrepo-com.svg">
+  <div class="input">
+  <input type="text" [(ngModel)]="filter" placeholder="Search the character!">
+  <span></span>
+</div>
+  <div *ngIf="filteredList">
+    <figure id="card"  *ngFor="let charas of (filteredList |  filterName: filter)">
       <h3>{{ charas.name }}</h3>
       <h4>{{ charas.class }}</h4>
-      <img src="{{charas.image}}" alt="{{ charas.name }}" />
+      <img src="{{charas.image}}" alt="{{ charas.name }}"/>
       <p id="p">{{ charas.description }}</p>
-      <p id="p">{{ charas.quote }} </p>
+      <p id="p">{{ charas.quote }}</p>
       <button (click)="catchChara(charas)">Edit</button>
     </figure>
   </div>
